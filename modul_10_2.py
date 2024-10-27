@@ -9,7 +9,6 @@ class Knight(threading.Thread):
         self.power = power
         self.n = 0
     def battle(self, name, power, counter=100):
-        # print(f'{self.name}, на нас напали!')
         power = int(self.power)
 
         while counter > 0:
