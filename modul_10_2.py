@@ -7,23 +7,21 @@ class Knight(threading.Thread):
         threading.Thread.__init__(self)
         self.name = name
         self.power = power
-
+        self.n = 0
     def battle(self, name, power, counter=100):
         # print(f'{self.name}, на нас напали!')
         power = int(self.power)
-        n = 0
 
         while counter > 0:
             time.sleep(1)
-            n += 1
+            self.n += 1
             counter -= power
-            print(f'{self.name} сражается {n} день(дня)..., осталось {counter} воинов.',)
-        if counter <= 0:
-            print(f'{self.name} одержал победу спустя {n} дней(дня)!')
+            print(f'{self.name} сражается {self.n} день(дня)..., осталось {counter} воинов.',)
 
     def run(self):
         print(f'{self.name}, на нас напали!')
         self.battle(self.name, self.power)
+        print(f'{self.name} одержал победу спустя {self.n} дней(дня)!')
 
 
 first_knight = Knight('Sir Lancelot', 10)
