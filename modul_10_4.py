@@ -30,12 +30,12 @@ class Cafe:
             for k, v in t_g.items():
                 if v == None:
                     t_g[k] = name
-                    print(f'{name} сел(-а) за стол номер {k}')
-                    Guest(name).start()
+                    print(f'{name.name} сел(-а) за стол номер {k}')
+                    name.start()
                     break
                 elif not None in t_g.values():
                     queue_c.put(name)
-                    print(f'{name} в очереди')
+                    print(f'{name.name} в очереди')
                     break
 
     def discuss_guests(self):
@@ -44,16 +44,14 @@ class Cafe:
             for k, v in t_g.items():
                 if v != None:
                     flg = False
-                    if Guest(v).is_alive() == False:
-                        print(f'{v} покушал(-а) и ушёл(ушла)')
+                    if v.is_alive() == False:
+                        print(f'{v.name} покушал(-а) и ушёл(ушла)')
                         print(f'Стол номер {k} свободен')
                         t_g[k] = None
-                        # print('t_g в конце ', t_g) #t
                         if queue_c.empty() == False:
                             t_g[k] = queue_c.get()
-                            print(f'{t_g[k]} вышел(-ла) из очереди и сел(-а) за стол номер {k}')
-                            Guest(t_g[k]).start()
-
+                            print(f'{t_g[k].name} вышел(-ла) из очереди и сел(-а) за стол номер {k}')
+                            t_g[k].start()
 
 
 # Создание столов
